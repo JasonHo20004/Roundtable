@@ -1,0 +1,283 @@
+:root {
+    --var-cultured: #F9F7F7;
+    --var-azureish-white: #DBE2EF;
+    --var-steel-blue: #3F72AF;
+    --var-deer: #c08d50;
+    --var-space-cadet: #112D4E;
+}
+
+.create-profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.create-profile-card {
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.create-profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.create-profile-header h1 {
+    font-size: 28px;
+    color: var(--var-space-cadet);
+    margin-bottom: 8px;
+}
+
+.create-profile-header p {
+    color: var(--var-steel-blue);
+    font-size: 16px;
+}
+
+.create-profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--var-space-cadet);
+    font-size: 14px;
+}
+
+.form-control {
+    padding: 0.75rem;
+    border: 1px solid var(--var-azureish-white);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: var(--var-steel-blue);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(63, 114, 175, 0.2);
+}
+
+.form-control.is-invalid {
+    border-color: #e74c3c;
+}
+
+.invalid-feedback {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.media-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--var-azureish-white);
+    padding-top: 1.5rem;
+}
+
+.media-section h3 {
+    font-size: 18px;
+    color: var(--var-space-cadet);
+    margin-bottom: 1rem;
+}
+
+.file-input-container {
+    position: relative;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.file-input {
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.file-input-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--var-steel-blue);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.file-input-label:hover {
+    background-color: var(--var-space-cadet);
+}
+
+.image-preview {
+    margin-top: 1rem;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-preview {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--var-steel-blue);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.avatar-preview:hover {
+    transform: scale(1.05);
+}
+
+.banner-preview {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid var(--var-steel-blue);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.banner-preview:hover {
+    transform: scale(1.02);
+}
+
+.media-item {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: var(--var-cultured);
+}
+
+.media-item h4 {
+    margin-bottom: 1rem;
+    color: var(--var-space-cadet);
+    font-size: 18px;
+}
+
+.preview-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
+    background-color: var(--var-azureish-white);
+    border-radius: 8px;
+    color: var(--var-space-cadet);
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+.button-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Thêm khoảng cách giữa các nút */
+}
+
+.skip-button {
+    background-color: var(--var-azureish-white);
+    color: var(--var-space-cadet);
+    border: 1px solid var(--var-steel-blue);
+    border-radius: 5px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.skip-button:hover {
+    background-color: #e0e7f1;
+}
+
+.skip-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.submit-button {
+    background-color: var(--var-steel-blue);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: var(--var-space-cadet);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .create-profile-card {
+        padding: 1.5rem;
+    }
+
+    .create-profile-header h1 {
+        font-size: 24px;
+    }
+
+    .create-profile-form {
+        gap: 1rem;
+    }
+}
+
+select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233F72AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+}
+
+select.form-control:focus {
+    border-color: var(--var-steel-blue);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(63, 114, 175, 0.2);
+}
+
+select.form-control.is-invalid {
+    border-color: #e74c3c;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e74c3c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}

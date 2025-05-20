@@ -1,0 +1,157 @@
+.auth-layout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--var-cultured);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background shapes */
+.auth-background {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.auth-shape {
+    position: absolute;
+    opacity: 0.4;
+    animation: float 5s infinite ease-in-out;
+}
+
+/* Triangle pointing down */
+.shape-1 {
+    width: 0;
+    height: 0;
+    border-left: 120px solid transparent;
+    border-right: 120px solid transparent;
+    border-top: 200px solid var(--var-steel-blue);
+    top: -50px;
+    left: -30px;
+    animation-delay: 0s;
+}
+
+/* Triangle pointing up */
+.shape-2 {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 170px solid var(--var-space-cadet);
+    bottom: -30px;
+    right: -30px;
+    animation-delay: -5s;
+}
+
+/* Triangle pointing right */
+.shape-3 {
+    width: 0;
+    height: 0;
+    border-top: 90px solid transparent;
+    border-bottom: 90px solid transparent;
+    border-left: 160px solid var(--var-deer);
+    top: 50%;
+    left: 80%;
+    animation-delay: -10s;
+}
+
+/* Triangle pointing left */
+.shape-4 {
+    width: 0;
+    height: 0;
+    border-top: 85px solid transparent;
+    border-bottom: 85px solid transparent;
+    border-right: 145px solid var(--var-steel-blue);
+    top: 20%;
+    right: 15%;
+    animation-delay: -7s;
+}
+
+/* Triangle pointing down-right */
+.shape-5 {
+    width: 0;
+    height: 0;
+    border-top: 260px solid var(--var-space-cadet);
+    border-right: 260px solid transparent;
+    bottom: 25%;
+    left: 15%;
+    animation-delay: -12s;
+}
+
+/* Triangle pointing down-left */
+.shape-6 {
+    width: 0;
+    height: 0;
+    border-top: 120px solid var(--var-deer);
+    border-left: 120px solid transparent;
+    top: 10%;
+    left: 30%;
+    animation-delay: -5s;
+}
+
+/* Triangle pointing up-right */
+.shape-7 {
+    width: 0;
+    height: 0;
+    border-bottom: 130px solid var(--var-steel-blue);
+    border-right: 130px solid transparent;
+    bottom: 15%;
+    right: 25%;
+    animation-delay: -8s;
+}
+
+/* Triangle pointing up-left */
+.shape-8 {
+    width: 0;
+    height: 0;
+    border-bottom: 110px solid var(--var-space-cadet);
+    border-left: 110px solid transparent;
+    top: 20%;
+    right: 40%;
+    animation-delay: -15s;
+}
+
+/* Small triangle pointing down */
+.shape-9 {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-top: 100px solid var(--var-deer);
+    bottom: 15%;
+    left: 35%;
+    animation-delay: -3s;
+}
+
+/* Large triangle pointing up */
+.shape-10 {
+    width: 0;
+    height: 0;
+    border-left: 75px solid transparent;
+    border-right: 75px solid transparent;
+    border-bottom: 140px solid var(--var-steel-blue);
+    top: 60%;
+    left: 50%;
+    animation-delay: -6s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(20px) rotate(-5deg);
+    }
+}

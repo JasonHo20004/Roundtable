@@ -1,0 +1,24 @@
+/* src/shared/components/UIElement/Input/Input.css */
+
+.input-group-text {
+    width: 3rem;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Styling for the wrapper of file input when using the modified Input component */
+.input-file-wrapper .form-label {
+    margin-bottom: 0.5rem; /* Standard Bootstrap label margin */
+    display: block; /* Ensure it takes its own line */
+}
+
+/* Ensure Bootstrap's validation feedback displays correctly */
+.input-group.has-validation .invalid-feedback,
+.input-group.has-validation .valid-feedback,
+.input-file-wrapper.has-validation .invalid-feedback, /* For file input wrapper */
+.input-file-wrapper.has-validation .valid-feedback { /* For file input wrapper */
+    display: block; /* Override Bootstrap's default display: none for feedback within input-groups */
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: .875em;
+}

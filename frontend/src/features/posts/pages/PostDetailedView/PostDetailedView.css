@@ -1,0 +1,12 @@
+/* Placeholder text style for the top-level comment input */
+.small-placeholder::placeholder {
+    font-size: 13px; /* Slightly larger than original 12px */
+    color: var(--bs-secondary-color); /* Use Bootstrap muted text color */
+}
+
+/* Optional: Add spacing or borders around comment section */
+.comment-section-container { /* Add this class to the div wrapping WriteComment and CommentList */
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bs-border-color-translucent); /* Subtle separator */
+}

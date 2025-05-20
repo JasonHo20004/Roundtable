@@ -1,0 +1,38 @@
+/* src/features/users/pages/UserProfileView/UserProfileView.css */
+
+/* The main card-like header for user avatar and name */
+.profile-view-header {
+    background-color: #ffffff;
+    border: 1px solid var(--var-azureish-white);
+    border-radius: 0.375rem;
+}
+
+.profile-view-header .card-body {
+    padding: 1.25rem;
+}
+
+.profile-view-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid var(--var-steel-blue);
+    object-fit: cover;
+}
+
+.profile-view-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-view-displayName {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--var-space-cadet);
+    margin-bottom: 0.1rem;
+}
+
+.profile-view-username {
+    font-size: 0.9rem;
+    color: #6c757d;
+}

@@ -1,0 +1,58 @@
+/* src/features/users/pages/UserProfileView/UserProfileSidebar/UserProfileSidebar.css */
+
+/* This targets the div that UserProfileSidebar might render if it creates its own card structure.
+   If it only injects content into the global RightSidebar, these styles apply to that global one.
+*/
+.user-profile-sidebar-wrapper { /* Add this class to the root div in UserProfileSidebar.jsx if it creates one */
+    background-color: #ffffff;
+    border: 1px solid var(--var-azureish-white);
+    border-radius: 0.375rem;
+    padding: 1rem;
+    height: fit-content; /* So it doesn't stretch unnecessarily */
+}
+
+.profile-banner {
+    width: 100%;
+    height: 100px; /* Adjust banner height */
+    object-fit: cover;
+    border-radius: 0.25rem 0.25rem 0 0; /* Rounded top corners if part of a card */
+    margin-bottom: 0.75rem; /* Space below banner */
+}
+
+.profile-name-sidebar { /* Renamed to avoid conflict if UserInfo is used elsewhere */
+    text-align: center;
+    padding-bottom: 0.75rem; /* Space below name */
+    /* border-bottom: 1px solid var(--var-azureish-white); */ /* Optional separator */
+    margin-bottom: 0.75rem; /* Space after the name block */
+}
+
+.profile-name-sidebar h4 {
+    margin-bottom: 0.15rem;
+    font-size: 1.2rem; /* Slightly smaller for sidebar */
+    color: var(--var-space-cadet);
+    font-weight: 600;
+}
+
+/* UserInfo specific styles moved to UserInfo.css */
+
+/* Setting specific styles moved to Setting.css or kept generic */
+
+/* Sidebar buttons (Follow, Chat, Block) */
+.user-profile-sidebar-wrapper .button-8,
+.right-sidebar__footer .button-8 { /* Also target if injected into global sidebar footer */
+    background-color: var(--var-steel-blue);
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem; /* Adjusted padding */
+    border-radius: 50px; /* Pill shape */
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+    width: 100%; /* Make buttons full width of their container */
+}
+
+.user-profile-sidebar-wrapper .button-8:hover,
+.right-sidebar__footer .button-8:hover {
+    background-color: var(--var-space-cadet);
+}

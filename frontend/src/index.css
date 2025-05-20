@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+:root {
+    font-family: "Merriweather", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+
+    /* Light Theme Palette */
+    --var-cultured: #F9F7F7;
+    --var-azureish-white: #DBE2EF;
+    --var-steel-blue: #3F72AF;
+    --var-deer: #c08d50;
+    --var-space-cadet: #112D4E;
+
+    --var-steel-blue-rgb: 63, 114, 175;
+    --var-deer-rgb: 192, 141, 80;
+    --var-space-cadet-rgb: 17, 45, 78;
+    --var-cultured-rgb: 249, 247, 247;
+    --var-azureish-white-rgb: 219, 226, 239;
+
+
+    --var-fs-7: 0.75em;
+    --var-fs-8: 0.625em;
+    --var-fs-9: 0.5em;
+    --var-fs-10: 0.375em;
+}
+
+/* Light Theme Application */
+[data-theme="light"] {
+    html, body {
+        background-color: var(--var-cultured);
+        color: var(--var-space-cadet);
+    }
+}
+
+/* Base styles */
+html, body {
+    font-family: inherit;
+    height: 100%;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+/* Font size utilities */
+.fs-7 {
+    font-size: 0.75em !important;
+}
+
+.fs-8 {
+    font-size: 0.625em !important;
+}
+
+.fs-9 {
+    font-size: 0.5em !important;
+}
+
+.fs-10 {
+    font-size: 0.375em !important;
+}
+
+/* Background classes — Light Theme */
+.bg-cultured {
+    background-color: var(--var-cultured);
+}
+
+.bg-azureish-white {
+    background-color: var(--var-azureish-white);
+}
+
+.bg-steel-blue {
+    background-color: var(--var-steel-blue);
+}
+
+.bg-deer {
+    background-color: var(--var-deer);
+}
+
+.bg-space-cadet {
+    background-color: var(--var-space-cadet);
+}
+
+/* Text classes — Light Theme */
+.text-cultured {
+    color: var(--var-cultured);
+}
+
+.text-azureish-white {
+    color: var(--var-azureish-white);
+}
+
+.text-steel-blue {
+    color: var(--var-steel-blue);
+}
+
+.text-deer {
+    color: var(--var-deer);
+}
+
+.text-space-cadet {
+    color: var(--var-space-cadet);
+}

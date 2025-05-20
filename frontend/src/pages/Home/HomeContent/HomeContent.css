@@ -1,0 +1,48 @@
+.home-content-container {
+    position: relative;
+}
+
+.sticky-sort-container {
+    position: sticky;
+    top: 60px; /* Điều chỉnh giá trị này tùy thuộc vào chiều cao của navbar */
+    z-index: 100;
+    background-color: #f8f9fa; /* Màu nền phù hợp với trang */
+    padding: 4px 0; /* Giảm padding từ 8px xuống 4px */
+    margin-bottom: 8px; /* Giảm margin từ 16px xuống 8px */
+}
+
+.sort-options {
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sort-options .dropdown-menu {
+    min-width: 200px;
+}
+
+.sort-options .dropdown-item {
+    cursor: pointer;
+}
+
+.sort-options .dropdown-item.active {
+    background-color: #f0f0f0;
+    color: #000;
+    font-weight: bold;
+}
+
+.sort-options .sort {
+    font-weight: bold;
+    color: #666;
+    padding: 0.25rem 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.content-padding {
+    padding-top: 1px; /* Giảm padding từ 10px xuống 5px */
+}
+
+/* Thêm style cho các bài viết để giảm khoảng cách giữa chúng */
+.posts-container > * {
+    margin-bottom: 12px; /* Giảm khoảng cách giữa các bài viết */
+}

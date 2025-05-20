@@ -1,0 +1,7 @@
+.list-group-item {
+    background-color: transparent;
+}
+
+.popover-menu .list-group-item * {
+    white-space: nowrap;
+}

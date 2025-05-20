@@ -1,0 +1,133 @@
+
+.register-form-container {
+    min-width: 550px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.register-form-container h1 {
+    font-size: 24px;
+    color: var(--var-space-cadet);
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.register-form-container p {
+    color: var(--var-steel-blue);
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.checkbox-group {
+    margin-top: 5px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-top: 3px;
+}
+
+.checkbox-container label {
+    font-size: 14px;
+    color: var(--var-steel-blue);
+}
+
+.terms-link {
+    color: var(--var-steel-blue);
+    text-decoration: none;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+.register-footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.register-button {
+    margin-top: 10px;
+}
+
+.login-link {
+    color: var(--var-steel-blue);
+    margin-left: 5px;
+}
+
+/* Password strength indicator */
+.password-strength {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.strength-bar {
+    height: 5px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.strength-level {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.strength-0 {
+    background-color: var(--var-deer);
+}
+
+.strength-1 {
+    background-color: #e67e22;
+}
+
+.strength-2 {
+    background-color: #f1c40f;
+}
+
+.strength-3 {
+    background-color: #2ecc71;
+}
+
+.strength-4 {
+    background-color: #27ae60;
+}
+
+.strength-text {
+    font-size: 12px;
+    color: var(--var-steel-blue);
+    text-align: right;
+}
+
+@media (max-width: 576px) {
+    .register-card {
+        padding: 20px;
+    }
+
+    .register-header h1 {
+        font-size: 24px;
+    }
+}

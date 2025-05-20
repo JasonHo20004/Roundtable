@@ -1,0 +1,11 @@
+.nav-link.active {
+    color: var(--header-btn-primary-color);
+}
+
+.nav-link.active:hover {
+    color: var(--header-btn-hover-color);
+}
+
+.nav-link.pending {
+    color: var(--header-btn-hover-color);
+}

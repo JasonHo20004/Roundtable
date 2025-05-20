@@ -1,0 +1,10 @@
+.qodo
+.idea
+.codebuddy
+
+*~*
+
+.env
+
+docker-compose.yml
+init.sql

@@ -1,0 +1,31 @@
+.btn:active {
+    border: none;
+}
+
+.btn:focus-visible {
+    /* Use the opposite of the background color */
+    outline: black solid 2px;
+}
+
+.btn-icon {
+    min-width: 20px;
+    min-height: 20px;
+    line-height: 0;
+}
+
+/* Outline depth */
+.btn-outline-depth-1 {
+    border-width: 1px;
+}
+
+.btn-outline-depth-2 {
+    border-width: 2px;
+}
+
+.btn-outline-depth-3 {
+    border-width: 3px;
+}
+
+
+
+

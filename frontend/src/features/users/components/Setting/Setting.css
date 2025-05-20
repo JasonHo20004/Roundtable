@@ -1,0 +1,12 @@
+/* src/features/users/components/Setting/Setting.css */
+.setting-container {
+    padding-top: 0.75rem;
+}
+
+.setting-main-title { /* Styles for the "User Settings" heading */
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--var-space-cadet);
+    margin-bottom: 0.75rem !important; /* Ensure spacing below title */
+    padding-left: 0.5rem; /* Align with items if they have padding */
+}

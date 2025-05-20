@@ -1,0 +1,59 @@
+/* --- Styles for Post Options Button and Menu --- */
+
+/* The '...' trigger icon */
+.option-container .option-icon {
+    fill: var(--var-space-cadet) !important;
+}
+
+/* Hover for the '...' trigger button */
+.option-container .option-btn:hover {
+    background-color: var(--var-azureish-white) !important;
+}
+
+/* Style for the popover menu itself - uses 'addClass' prop in PopoverMenu */
+.option-menu { /* This class is added via addClass="option-menu ..." */
+    padding: 0; /* Remove default popover padding if needed */
+}
+
+
+/* Style for buttons inside the popover menu */
+.option-menu .btn { /* Target all buttons within the menu */
+    text-align: left;
+    width: 100%;
+    border-radius: 0; /* No rounded corners inside */
+    padding: 0.6rem 1rem; /* Adjust padding */
+    font-size: var(--var-fs-7); /* Match other text sizes */
+    color: var(--var-space-cadet);
+    border: none; /* Remove default button border */
+    border-bottom: 1px solid var(--bs-border-color-translucent); /* Separator */
+}
+
+.option-menu .btn:last-child {
+    border-bottom: none; /* No separator for the last item */
+}
+
+/* Hover effect for buttons inside the popover menu */
+.option-menu .save-btn:hover,
+.option-menu .hide-btn:hover,
+.option-menu .report-btn:hover,
+.option-menu .edit-btn:hover,
+.option-menu .delete-btn:hover {
+    background-color: var(--var-azureish-white) !important;
+    color: var(--var-space-cadet); /* Keep text color on hover */
+    transition: background-color 0.2s ease-in-out;
+}
+
+
+/* Icons inside the Popover Menu Buttons */
+/* Use specific classes added via addClass prop in JSX */
+.option-menu .save-icon-class,
+.option-menu .hide-icon-class,
+.option-menu .report-icon-class,
+.option-menu .edit-icon-class,
+.option-menu .delete-icon-class {
+    fill: var(--var-space-cadet) !important;
+    margin-right: 0.75rem; /* Space between icon and text */
+    vertical-align: middle; /* Align icon nicely */
+    width: 15px; /* Consistent icon size */
+    height: 15px;
+}

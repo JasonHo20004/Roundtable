@@ -1,0 +1,48 @@
+.right-sidebar__header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.clear-btn {
+    background-color: transparent;
+    border: none;
+    color: #0079d3;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.clear-btn:hover {
+    text-decoration: underline;
+}
+
+.right-sidebar__posts .post-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.post-item__info:hover {
+    text-decoration: underline;
+}
+
+.post-item__subtable:hover {
+    text-decoration: underline;
+}
+
+.post-item__title:hover {
+    text-decoration: underline;
+}
+
+.post-item__title {
+    font-weight: bold;
+    margin: 0.2rem 0;
+    color: #000;
+}
+
+.post-item__info {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.post-item:last-child {
+    border-bottom: none;
+}

@@ -1,0 +1,87 @@
+.Header{
+    height: 200px;
+}
+.sizeBanner{
+    height: 100px;
+    width:1080px;
+    overflow: hidden;
+}
+.resizeAvatar{
+    width: 95px;
+    height: 95px;
+}
+.avatarAndBanner{
+    position: relative;
+}
+.moveAvatar{
+    position: absolute;
+    top: 70px;
+    left: 20px;
+}
+.nameSubtable{
+    position: absolute;
+    top: 120px;
+    left: 130px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.resizeButton{
+    position: absolute;
+    width: 220px;
+    top: 120px;
+    right: 30px;
+
+}
+.designButtonCreatePost{
+    border-color: black !important;
+    font-size: 12px;
+}
+.designButtonCreatePost:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.designButtonJoin{
+    background-color: #3F72AF !important;
+    font-size: 12px;
+}
+.designButtonMore{
+    border-color: black !important;
+}
+.designButtonMore:hover{
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+.mostPost{
+    font-size:12px;
+}
+.reSizeButtonSort{
+    width: 150px;
+}
+.sort{
+    font-size: 12px;
+    font-weight: bold;
+}
+.item{
+    font-size: 12px;
+}
+.item:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.resizeDropdown1{
+    min-width: 0; /* Prevents the dropdown from expanding to fit the text */
+    width: 100px; /* Set a fixed width for the dropdown */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.resizeDropdown2{
+    min-width: 0; /* Prevents the dropdown from expanding to fit the text */
+    width: 120px; /* Set a fixed width for the dropdown */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.resizeMagin{
+    margin-right: 27px;
+}
+/* .dropdown-menu{
+    width: 100px !important;
+} */

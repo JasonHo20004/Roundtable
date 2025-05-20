@@ -1,0 +1,48 @@
+{
+	"name": "backend",
+	"version": "1.0.0",
+	"description": "",
+	"license": "ISC",
+	"author": "",
+	"type": "module",
+	"imports": {
+		"#/*": "./*",
+		"#daos/*": "./daos/*",
+		"#models/*": "./models/*",
+		"#controllers/*": "./controllers/*",
+		"#routes/*": "./routes/*",
+		"#services/*": "./services/*",
+		"#utils/*": "./utils/*",
+		"#db/*": "./db/*",
+		"#websocket/*": "./websocket/*",
+		"#constants/*": "./constants/*",
+		"#middlewares/*": "./middlewares/*",
+		"#errors/*": "./errors/*",
+		"#core/*": "./core/*",
+		"#listeners/*": "./listeners/*"
+	},
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node app.js",
+		"dev": "nodemon -L app.js"
+	},
+	"dependencies": {
+		"argon2": "^0.41.1",
+		"connect-redis": "^8.0.2",
+		"cors": "^2.8.5",
+		"dotenv": "^16.5.0",
+		"express": "^5.1.0",
+		"express-session": "^1.18.1",
+		"jsonwebtoken": "^9.0.2",
+		"knex": "^3.1.0",
+		"multer": "^1.4.5-lts.1",
+		"nodemailer": "^6.10.1",
+		"pg": "^8.14.1",
+		"redis": "^4.7.0",
+		"ws": "^8.18.1"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.10"
+	}
+}

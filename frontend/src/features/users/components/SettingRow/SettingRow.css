@@ -1,0 +1,50 @@
+/* src/features/users/components/SettingRow/SettingRow.css */
+.setting-row-item {
+    padding: 0.75rem 0.5rem; /* Adjust padding to match popover items */
+    border-bottom: 1px solid var(--var-azureish-white); /* Light separator line */
+    cursor: default;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.setting-row-item:last-child {
+    border-bottom: none;
+}
+
+
+.setting-row-icon-container {
+    flex-shrink: 0; /* Prevent icon container from shrinking */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+}
+
+.setting-icon svg {
+    fill: var(--var-space-cadet);
+}
+
+.setting-row-info {
+    flex-grow: 1;
+}
+
+.setting-row-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--var-space-cadet);
+    margin-bottom: 0.1rem;
+    line-height: 1.3;
+}
+
+.setting-row-describe {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+.setting-row-button {
+    font-size: 0.8rem !important;
+    padding: 0.25rem 0.75rem !important;
+    white-space: nowrap;
+    flex-shrink: 0; /* Prevent button from shrinking */
+}

@@ -1,0 +1,74 @@
+/* Suggested path: src/features/chats/components/ChatAppWrapper/ChatSidebar.css */
+.chat-sidebar {
+    width: 180px;
+    border-right: 1px solid var(--bs-border-color);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--var-cultured);
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--bs-border-color);
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--var-space-cadet);
+    background-color: #f8f9fa;
+}
+
+.chat-list {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 0;
+    margin: 0;
+}
+
+.chat-list-item {
+    /* --- Add these Flexbox lines --- */
+    display: flex; /* 1. Make it a flex container */
+    justify-content: space-between; /* 2. Push children apart */
+    align-items: center; /* 3. Vertically center children */
+    white-space: nowrap; /* Prevent name/badge wrapping */
+    /* --- End of added lines --- */
+
+    /* Keep your existing styles */
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    color: var(--var-space-cadet);
+    font-size: 0.9rem;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.chat-list-item:last-child {
+    border-bottom: none;
+}
+
+.chat-list-item:hover {
+    background-color: var(--var-azureish-white);
+}
+
+.chat-list-item.active {
+    background-color: var(--var-steel-blue);
+    color: var(--var-cultured);
+    font-weight: 500;
+}
+
+.chat-list-item.active .badge {
+    background-color: white !important;
+    color: #dc3545 !important;
+}
+
+.chat-user-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 8px;
+    flex-grow: 1;
+}
+
+.chat-unread-count {
+    flex-shrink: 0;
+}

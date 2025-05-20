@@ -1,0 +1,39 @@
+/* src/features/users/components/UserInfo/UserInfo.css */
+
+.karma {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.karma-item {
+    /* flex: 1; */
+}
+
+.karma-item h3,
+.created-day h3 {
+    font-size: 0.8rem;
+    color: #525457;
+    margin-bottom: 0.2rem;
+    text-transform: capitalize;
+}
+
+.karma-item p,
+.created-day p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--var-space-cadet);
+    margin-bottom: 0;
+}
+
+.created-day {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.user-info-container hr {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-color: var(--var-azureish-white);
+}

@@ -1,0 +1,59 @@
+/* src/features/chats/components/ChatAppWrapper/ChatAppWrapper.css */
+
+.chat-app-wrapper {
+    /* --- Dimensions --- */
+    width: 550px;
+    max-width: 90vw;
+    height: 450px;
+    max-height: 70vh;
+
+    /* --- Visibility & Transition --- */
+    z-index: 9999;
+    transform: scale(0.95) translateY(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out, visibility 0.2s linear;
+    overflow: hidden; /* Hide content during transition */
+}
+
+.chat-app-wrapper.visible {
+    /* Become visible (full scale, no translation, full opacity) */
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.chat-app-wrapper.hidden {
+    /* Explicitly define hidden state for transition */
+    transform: scale(0.95) translateY(10px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* --- Internal Layout --- */
+/* Ensure sidebar and content area layout correctly */
+.chat-content-area {
+    min-width: 0;
+    height: 100%;
+}
+
+.no-chat-selected {
+    /* Styles for the placeholder message */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Fill the content area */
+}
+
+/* Ensure ChatBox fills the content area */
+.chat-content-area > .chatbox-container {
+    height: 100%;
+    width: 100%;
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+}

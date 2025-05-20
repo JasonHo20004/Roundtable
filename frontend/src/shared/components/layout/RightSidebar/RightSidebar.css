@@ -1,0 +1,21 @@
+.right-sidebar {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    padding: 1rem;
+}
+
+.right-sidebar__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+
+    #right-sidebar-container {
+        display: none;
+    }
+}

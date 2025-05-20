@@ -1,0 +1,38 @@
+/* src/features/chat/components/ChatMessage/ChatMessage.css */
+
+/* --- Styles specifically for individual message bubbles --- */
+.chatbox-message {
+    max-width: 80%;
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.chatbox-message.received {
+    background-color: var(--var-azureish-white);
+    color: var(--var-space-cadet);
+    border-bottom-left-radius: 2px;
+}
+
+.chatbox-message.sent {
+    background-color: var(--var-steel-blue);
+    color: var(--var-cultured);
+    border-bottom-right-radius: 2px;
+}
+
+.message-sender {
+    display: block;
+    font-size: 0.75rem;
+    margin-bottom: 2px;
+    color: var(--var-steel-blue);
+}
+
+.chatbox-message.sent .message-sender {
+
+}
+
+.message-text {
+
+}

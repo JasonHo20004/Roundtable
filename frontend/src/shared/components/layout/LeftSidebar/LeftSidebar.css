@@ -1,0 +1,96 @@
+#left-sidebar-container {
+    max-width: 350px;
+    transition: margin-left 0.3s ease;
+    position: relative; /* Important: makes toggle button position relative to this */
+}
+
+#left-sidebar-container:not(.open) {
+    margin-left: -220px;
+}
+
+#left-sidebar-container.open {
+    margin-left: 0;
+}
+
+#left-sidebar-toggle-container {
+    position: absolute;
+    top: 10px;
+    right: -20px; /* Keeps button on the edge when sidebar is hidden or shown */
+    z-index: 1000;
+}
+
+#left-sidebar {
+    width: 200px;
+    margin-right: 20px;
+}
+
+.recent-section .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.recent-section .icon-wrapper {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+    margin-right: 8px;
+}
+
+.recent-section li {
+    padding-left: 8px; /* Adjust as needed */
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.recent-section li:hover {
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+
+.section-header {
+    cursor: pointer;
+    padding: 4px 0;
+}
+
+.section-header:hover h6 {
+    color: #555 !important;
+}
+
+.dropdown-section {
+    margin-bottom: 15px;
+}
+
+.beta-tag {
+    color: #ff4500;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.icon-wrapper {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+    margin-right: 8px;
+}
+
+#sidebar-toggle {
+    border: #dee2e6 1px solid;
+    background-color: white;
+}
+
+#sidebar-toggle:hover {
+    border: black 1px solid;
+}
+
+@media (max-width: 768px) {
+    #sidebar-toggle {
+        display: none !important;
+    }
+
+    #left-sidebar-container {
+        margin-left: -250px;
+    }
+}

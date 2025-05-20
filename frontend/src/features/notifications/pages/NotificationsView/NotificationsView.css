@@ -1,0 +1,10 @@
+.notifications-page-container {
+    margin-top: 1rem; /* Add some space from the header */
+}
+
+.notifications-page-container .card-header {
+    background-color: var(--var-cultured);
+    border-bottom: 1px solid var(--var-azureish-white);
+    font-size: 1.2rem;
+    font-weight: bold;
+}

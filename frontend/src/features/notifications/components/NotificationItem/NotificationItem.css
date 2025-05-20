@@ -1,0 +1,46 @@
+.notification-item {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--var-azureish-white); /* Separator */
+    transition: background-color 0.2s ease-in-out;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item.unread {
+    background-color: rgba(var(--var-steel-blue-rgb), 0.05); /* Subtle highlight for unread */
+    font-weight: 500; /* Slightly bolder text for unread */
+}
+
+.notification-item:hover {
+    background-color: rgba(var(--var-steel-blue-rgb), 0.1);
+}
+
+.notification-icon {
+    color: var(--var-steel-blue);
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.notification-content {
+    flex-grow: 1;
+}
+
+.notification-text {
+    font-size: 0.9rem;
+    color: var(--var-space-cadet);
+    line-height: 1.4;
+}
+
+.notification-text strong {
+    font-weight: 600; /* Make usernames bolder */
+}
+
+.unread-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--var-steel-blue);
+    border-radius: 50%;
+    align-self: center; /* Center dot vertically */
+    flex-shrink: 0;
+}

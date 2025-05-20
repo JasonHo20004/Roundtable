@@ -1,0 +1,134 @@
+/* src/features/auth/pages/Login/Login.css */
+
+.login-form-container {
+    min-width: 550px; /* Match Register page */
+    background-color: rgba(255, 255, 255, 0.85); /* Match Register page */
+    backdrop-filter: blur(8px); /* Match Register page */
+    border-radius: 10px; /* Match Register page */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Match Register page */
+    padding: 30px; /* Match Register page */
+    margin: 0 auto; /* Center horizontally */
+    position: relative; /* Match Register page */
+    z-index: 10; /* Match Register page */
+    /* Added display flex to center content vertically if needed, adjust as per layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically within the container */
+    /* align-items: center; /* Center content horizontally if not using margin: 0 auto */
+    /* min-height: 100vh; /* Example: ensure it takes full viewport height */
+}
+
+.login-form-container h1 {
+    font-size: 24px; /* Match Register page */
+    color: var(--var-space-cadet); /* Match Register page */
+    font-weight: bold; /* Match Register page */
+    text-align: center; /* Match Register page */
+}
+
+.login-form-container p {
+    color: var(--var-steel-blue); /* Match Register page */
+    font-size: 16px; /* Match Register page */
+    text-align: center; /* Match Register page */
+    margin-bottom: 20px; /* Match Register page */
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Match Register page form gap */
+    width: 100%; /* Ensure form takes full width of container */
+}
+
+/* Keep .form-group styles, they are identical */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Keep label styles */
+.form-group label {
+    font-weight: 500;
+    color: #444;
+    font-size: 14px;
+}
+
+/* Keep input styles, they are identical */
+input[type="text"],
+input[type="password"] {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #4a69dd;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 105, 221, 0.2);
+}
+
+/* Keep error styles */
+input.error {
+    border-color: #e74c3c;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* Keep form-options if needed, though not used in current JSX */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.forgot-password {
+    color: #4a69dd;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Adjust login-button styles slightly */
+.login-button {
+    margin-top: 10px;
+}
+
+/* Keep hover/disabled styles */
+.login-button:hover {
+    background-color: var(--var-azureish-white);
+    color: var(--var-space-cadet);
+}
+
+.login-button:disabled {
+    background-color: #a2aed3;
+    cursor: not-allowed;
+}
+
+/* Keep footer styles, they are similar */
+.login-footer {
+    text-align: center;
+    margin-top: 20px; /* Matches Register page */
+    padding-top: 15px; /* Matches Register page */
+    border-top: 1px solid #eee; /* Matches Register page */
+}
+
+.register-link {
+    color: var(--var-steel-blue);
+    margin-left: 5px; /* Matches Register page */
+}

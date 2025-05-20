@@ -1,0 +1,106 @@
+/* --- Shared styles for Post Core Elements --- */
+
+/* Default fill color for action icons */
+.post-actions-container .upvote-icon,
+.post-actions-container .downvote-icon,
+.post-actions-container .comment-icon,
+.post-actions-container .share-icon {
+    fill: var(--var-space-cadet) !important; /* Define --var-space-cadet globally */
+    transition: fill 0.2s ease-in-out;
+}
+
+/* Default background for action groups */
+.post-actions-container .vote-container,
+.post-actions-container .comment-container,
+.post-actions-container .share-container {
+    background-color: var(--bs-light); /* Use Bootstrap light or your var */
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    padding: 0.1rem; /* Consistent small padding around groups */
+}
+
+
+/* Hover effect for individual action buttons within groups */
+.post-actions-container .upvote-btn:hover,
+.post-actions-container .downvote-btn:hover,
+.post-actions-container .comment-btn:hover,
+.post-actions-container .share-btn:hover {
+    background-color: var(--var-azureish-white) !important; /* Define --var-azureish-white globally */
+    border-radius: 999px; /* Ensure hover maintains pill shape if button is inside */
+}
+
+/* --- Vote Container Specific Styles --- */
+.vote-container {
+    /* Base styles if any - transitions already added above */
+}
+
+.vote-container.upvote {
+    --bs-bg-opacity: 1;
+    --bs-upvoted-rgb: var(--var-steel-blue-rgb); /* Define this CSS variable globally */
+    background-color: rgba(var(--bs-upvoted-rgb), var(--bs-bg-opacity)) !important;
+    color: var(--var-cultured); /* Define --var-cultured globally (white/light) */
+}
+
+.vote-container.upvote .upvote-icon {
+    fill: var(--var-cultured) !important;
+}
+
+/* Reset downvote icon when upvoted */
+.vote-container.upvote .downvote-icon {
+    fill: var(--var-cultured) !important; /* Make it white like text */
+    opacity: 0.7; /* Slightly dim */
+}
+
+/* Ensure vote count text is styled correctly */
+.vote-container.upvote .fs-8 {
+    color: var(--var-cultured) !important;
+}
+
+
+.vote-container.downvote {
+    --bs-bg-opacity: 1;
+    --bs-downvoted-rgb: var(--var-deer-rgb); /* Define this CSS variable globally */
+    background-color: rgba(var(--bs-downvoted-rgb), var(--bs-bg-opacity)) !important;
+    color: var(--var-cultured);
+}
+
+.vote-container.downvote .downvote-icon {
+    fill: var(--var-cultured) !important;
+}
+
+/* Reset upvote icon when downvoted */
+.vote-container.downvote .upvote-icon {
+    fill: var(--var-cultured) !important; /* Make it white like text */
+    opacity: 0.7; /* Slightly dim */
+}
+
+/* Ensure vote count text is styled correctly */
+.vote-container.downvote .fs-8 {
+    color: var(--var-cultured) !important;
+}
+
+
+/* --- Font Size Styles --- */
+/* Vote count / Action group text */
+.fs-icon, /* This class was used for the vote count span */
+.post-actions-container .fs-8 /* Targeting text spans in comment/share */
+{
+    font-size: var(--var-fs-7); /* Define --var-fs-7 globally */
+    font-weight: bold;
+    color: var(--var-space-cadet); /* Default text color matching icons */
+    padding: 0 0.25rem; /* Add some horizontal spacing */
+    display: inline-block;
+    min-width: 1.5em; /* Ensure vote count has space */
+    text-align: center;
+}
+
+/* Post content text */
+.fs-content {
+    font-size: var(--var-fs-7); /* Define --var-fs-7 globally */
+    line-height: 1.45;
+    color: var(--bs-body-color); /* Standard text color */
+}
+
+/* Ensure icons inside buttons are vertically aligned */
+.post-actions-container .btn .icon {
+    vertical-align: middle;
+}

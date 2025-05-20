@@ -1,0 +1,19 @@
+#main-container {
+    padding: 1rem;
+    width: 1000px;
+}
+
+/* @media normal screen */
+@media screen and (max-width: 768px) {
+    main {
+        min-width: 400px;
+    }
+
+    #main-container {
+        flex-grow: 1;
+    }
+
+    #right-sidebar-container {
+        display: none;
+    }
+}

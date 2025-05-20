@@ -1,0 +1,88 @@
+/* Keep existing styles */
+.upvote-icon, .downvote-icon, .comment-icon, .share-icon, .option-icon {
+    fill: var(--var-space-cadet) !important;
+}
+
+.upvote-btn:hover, .downvote-btn:hover, .reply-btn:hover, .share-btn:hover, .option-btn:hover {
+    background-color: var(--var-azureish-white) !important;
+}
+
+.vote-container.upvoted {
+    --bs-bg-opacity: 1;
+    --bs-upvoted-rgb: var(--var-steel-blue-rgb);
+    background-color: rgba(var(--bs-upvoted-rgb), var(--bs-bg-opacity)) !important;
+    color: white;
+}
+
+.vote-container.upvoted .upvote-icon {
+    fill: var(--var-cultured) !important;
+}
+
+.vote-container.downvoted {
+    --bs-bg-opacity: 1;
+    --bs-downvoted-rgb: var(--var-deer-rgb);
+    background-color: rgba(var(--bs-downvoted-rgb), var(--bs-bg-opacity)) !important;
+    color: white;
+}
+
+.vote-container.downvoted .downvote-icon {
+    fill: var(--var-cultured) !important;
+}
+
+.fs-icon {
+    font-size: var(--var-fs-8);
+}
+
+.fs-content {
+    font-size: var(--var-fs-7);
+}
+
+.fs-content p {
+    margin: 0;
+}
+
+.comment-thread-item {
+    /* position: relative; /* Add if needed for absolute positioning within thread */
+}
+
+.comment-component {
+    position: relative; /* Establishes stacking context & positioning context */
+    z-index: 1; /* Default stacking order, above pseudo-elements */
+    /* background-color: white; /* Ensure it has a background to hide things behind it */
+}
+
+/* --- NEW RULE --- */
+/* Increase z-index when the popover inside this specific comment is open */
+.comment-component.popover-is-open {
+    z-index: 2; /* Needs to be higher than sibling comment-components */
+}
+
+
+.comment-replies {
+    position: relative;
+}
+
+.comment-replies::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 10px;
+    left: 12px; /* Adjust based on ps-4 */
+    width: 2px;
+    background-color: #e0e0e0;
+    z-index: 0; /* Behind comment content */
+}
+
+/* .comment-replies > .comment-thread-item > .comment-component.comment-reply {
+    margin-top: 8px; /* Reduce top margin */
+/* } */
+
+/* Ensure the last reply doesn't have extra space causing the line to extend too far */
+.comment-replies > .comment-thread-item:last-child {
+    /* padding-bottom: 0; /* Remove padding if needed */
+}
+
+/* Styling for the reply input area if needed */
+.reply-input-area {
+    /* Add specific styles if WriteComment doesn't handle its own layout */
+}

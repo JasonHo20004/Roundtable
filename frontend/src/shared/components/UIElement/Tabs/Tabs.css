@@ -1,0 +1,25 @@
+/* src/shared/components/UIElement/Tabs/Tabs.css */
+
+.profile-tabs .nav-link {
+    color: var(--var-space-cadet);
+    font-weight: 500;
+}
+
+.profile-tabs .nav-link:hover,
+.profile-tabs .nav-link:focus {
+    color: var(--var-steel-blue);
+    background-color: var(--var-azureish-white);
+}
+
+.profile-tabs .nav-link.active {
+    color: var(--var-cultured) !important;
+    background-color: var(--var-steel-blue) !important;
+    font-weight: bold;
+}
+
+/* Focus visible style for accessibility */
+.profile-tabs .nav-link:focus-visible {
+    outline: 2px solid var(--var-steel-blue);
+    outline-offset: 2px;
+    box-shadow: none;
+}

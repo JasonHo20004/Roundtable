@@ -1,0 +1,89 @@
+/* --- WriteComment Component Styling --- */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+
+/* Base card styling for the comment input area */
+.write-comment-card {
+    border: 1px solid var(--var-azureish-white); /* Lighter border */
+    border-radius: 6px; /* Slightly softer radius */
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--var-cultured); /* Main light background */
+    box-shadow: 0 1px 3px rgba(var(--var-space-cadet-rgb), 0.08); /* Subtle shadow using dark color */
+    overflow: hidden;
+}
+
+/* Styling for the card body containing the editor */
+.write-comment-card .card-body {
+    padding: 0.5rem; /* Add consistent padding around editor container */
+    /* The editor itself (.note-editor) gets styled by TextEditor.css */
+}
+
+/* Styling for the card footer containing the buttons */
+.write-comment-card .card-footer {
+    background-color: var(--var-cultured); /* Match card background */
+    border-top: 1px solid var(--var-azureish-white); /* Separator line */
+    padding: 0.6rem 0.75rem; /* Adjust padding */
+}
+
+
+/* --- Button Styles in Footer --- */
+
+/* Base styles for footer buttons */
+.write-comment-button {
+    padding: 6px 16px; /* Adjust padding */
+    font-size: 0.85rem;
+    border-radius: 15px; /* Rounded pill shape */
+    font-weight: 600; /* Bolder font */
+    border: 1px solid transparent; /* Start with transparent border */
+    transition: all 0.2s ease-in-out;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.write-comment-button:focus-visible {
+    outline: 2px solid var(--var-steel-blue);
+    outline-offset: 2px;
+}
+
+/* Cancel Button */
+.write-comment-button.cancel-button {
+    background-color: transparent;
+    color: var(--var-space-cadet);
+    border-color: var(--var-azureish-white); /* Use light border */
+}
+
+.write-comment-button.cancel-button:hover,
+.write-comment-button.cancel-button:focus {
+    background-color: var(--var-azureish-white); /* Fill on hover */
+    border-color: var(--var-azureish-white);
+    color: var(--var-space-cadet); /* Keep text dark */
+}
+
+/* Reset Button ("Xóa") */
+.write-comment-button.reset-button {
+    background-color: transparent;
+    color: var(--var-deer); /* Use deer color for text */
+    border-color: var(--var-deer); /* Use deer color for border */
+}
+
+.write-comment-button.reset-button:hover,
+.write-comment-button.reset-button:focus {
+    background-color: rgba(var(--var-deer-rgb), 0.1); /* Subtle deer background fill */
+    border-color: var(--var-deer);
+    color: var(--var-deer);
+}
+
+/* Submit Button ("Gửi") */
+.write-comment-button.submit-button {
+    background-color: var(--var-steel-blue);
+    color: var(--var-cultured); /* Light text on dark blue */
+    border-color: var(--var-steel-blue);
+}
+
+.write-comment-button.submit-button:hover,
+.write-comment-button.submit-button:focus {
+    background-color: var(--var-steel-blue);
+    border-color: var(--var-steel-blue);
+    opacity: 0.85; /* Slightly fade on hover */
+}

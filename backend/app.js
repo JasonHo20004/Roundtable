@@ -52,29 +52,27 @@ const internalIp = process.env.FRONTEND_INTERNAL_IP;
 const frontendPort = process.env.FRONTEND_PORT;
 const allowedOrigins = [
     `http://localhost:${frontendPort}`,
-    `http://${internalIp}:${frontendPort}` // <-- Add this line (assuming frontend runs on 3000)
+    `http://${internalIp}:${frontendPort}`,
+    process.env.FRONTEND_URL // Add your Vercel deployment URL
 ];
 
 console.log('Allowed Origins:', allowedOrigins);
 
 const corsOptions = {
     origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) {
-            return callback(null, true)
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            console.log('Blocked by CORS:', origin);
+            callback(new Error('Not allowed by CORS'));
         }
-        if (allowedOrigins.indexOf(origin) === -1) {
-            const msg = 'The CORS policy for this site does not ' +
-                'allow access from the specified Origin.'
-            return callback(new Error(msg), false)
-        }
-        return callback(null, true)
     },
-    optionsSuccessStatus: 200,
-    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
-    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     credentials: true,
-}
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+    exposedHeaders: ['Set-Cookie'],
+    maxAge: 86400 // 24 hours
+};
 
 const redisStore = new RedisStore({
     client: redisClient,

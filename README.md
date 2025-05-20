@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Roundtable
-=======
 # 🟠 Roundtable
 
 **Roundtable** is a full-stack Reddit-style social platform where users can create posts, join discussions, and upvote
@@ -37,4 +34,3 @@ Thanks to these awesome people for helping build Roundtable:
 ## 📄 License
 
 MIT License. See `LICENSE` for details.
->>>>>>> host

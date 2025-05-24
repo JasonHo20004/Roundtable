@@ -99,8 +99,7 @@ const sessionMiddleware = session({
         maxAge: (parseInt(process.env.SESSION_EXPIRATION_TIME, 10) || 30 * 60) * 1000,
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-        domain: process.env.NODE_ENV === 'production' ? process.env.COOKIE_DOMAIN : undefined
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
     },
     proxy: true // Trust the reverse proxy
 });

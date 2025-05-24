@@ -7,7 +7,8 @@ const client = await redis.createClient({
         tls: process.env.NODE_ENV === 'production' ? {
             rejectUnauthorized: true
         } : undefined
-    }
+    },
+    password: process.env.REDIS_PASSWORD
 })
     .on('error', (err) => console.log('Redis Client Error', err))
     .on('connect', () => console.log('Redis Client Connected'))

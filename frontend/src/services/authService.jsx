@@ -87,7 +87,7 @@ class AuthService {
             });
 
             console.log('AuthService createProfile successful:', response);
-            return response;
+            return data;
         } catch (error) {
             console.error("AuthService createProfile error:", error);
             throw error;

@@ -7,6 +7,7 @@ import Input from '#shared/components/UIElement/Input/Input';
 import Form from '#shared/components/UIElement/Form/Form';
 import LoadingSpinner from '#shared/components/UIElement/LoadingSpinner/LoadingSpinner';
 import Icon from '#shared/components/UIElement/Icon/Icon';
+import { createProfile } from '#services/authService';
 
 function CreateProfile() {
     const navigate = useNavigate();
@@ -123,6 +124,10 @@ function CreateProfile() {
         setSuccess(null);
         setIsSubmitting(true);
 
+        // Log the current state
+        console.log('Submitting form with profileId:', profileId);
+        console.log('Current formData:', formData);
+
         try {
             // Create FormData object from formData state
             const submitData = new FormData();
@@ -140,10 +145,18 @@ function CreateProfile() {
                 submitData.append('banner', formData.banner);
             }
 
+            // Log the FormData contents
+            console.log('FormData contents:');
+            for (let [key, value] of submitData.entries()) {
+                console.log(`${key}:`, value);
+            }
+
             const response = await createProfile(submitData);
+            console.log('Profile creation response:', response);
             setSuccess('Profile created successfully!');
             navigate('/dashboard');
         } catch (err) {
+            console.error('Profile creation error:', err);
             setError(err.message || 'Failed to create profile');
             if (err.errors) {
                 setFormErrors(err.errors);
@@ -194,17 +207,16 @@ function CreateProfile() {
 
                 <Form
                     id="create-profile"
-                    method="put"
-                    action="/create-profile"
+                    onSubmit={handleSubmit}
                     mainClass="create-profile-form"
                     encType="multipart/form-data"
-                    
                 >
-                    {/* Thêm input hidden để gán profileId */}
+                    {/* Hidden input for profileId */}
                     <input
                         type="hidden"
                         name="profileId"
                         value={profileId || ''}
+                        onChange={handleChange}
                     />
 
                     <div className="form-group">

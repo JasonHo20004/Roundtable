@@ -1,5 +1,7 @@
 // src/utils/apiClient.js (Create this new file or add to an existing utility file)
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+
 /**
  * Sends an API request.
  * @param {string} url - The endpoint URL.
@@ -12,9 +14,10 @@
  */
 export async function sendApiRequest(url, options = {}) {
     const {method = 'GET', body = null, headers = {}} = options;
+    const fullUrl = `${API_BASE_URL}${url}`;
 
     try {
-        const response = await fetch(url, {
+        const response = await fetch(fullUrl, {
             method,
             body: body ? JSON.stringify(body) : null,
             headers: {
@@ -43,7 +46,7 @@ export async function sendApiRequest(url, options = {}) {
         }
 
     } catch (err) {
-        console.error(`API Request Error to ${url}:`, err);
+        console.error(`API Request Error to ${fullUrl}:`, err);
         // Ensure the error has a status if possible, default to 500
         if (!err.status) {
             err.status = 500;

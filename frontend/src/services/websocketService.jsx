@@ -7,12 +7,11 @@ let reconnectAttempts = 0;
 const MAX_RECONNECT_ATTEMPTS = 5;
 const RECONNECT_DELAY_MS = 3000;
 
-// Determine WebSocket protocol based on HTTP protocol
-const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-const wsHost = process.env.NODE_ENV === 'production' 
-    ? window.location.hostname  // Use the same hostname in production
-    : `${window.location.hostname}:5000`; // Use port 5000 in development
-const wsUrl = `${wsProtocol}//${wsHost}`;
+// Use environment variable for WebSocket URL in production
+const WS_BASE_URL = import.meta.env.VITE_WS_URL || 
+    (process.env.NODE_ENV === 'production' 
+        ? `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.hostname}`
+        : `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.hostname}:5000`);
 
 // --- Helper function to notify all observers ---
 function notifyObservers(data) {
@@ -34,7 +33,7 @@ function connectWebSocket(userId) {
         return Promise.resolve(socket);
     }
     connectionPromise = new Promise((resolve, reject) => {
-        socket = new WebSocket(wsUrl);
+        socket = new WebSocket(WS_BASE_URL);
 
         socket.onopen = () => {
             console.log("[WebSocket Service] Connection established.");

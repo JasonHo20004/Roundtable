@@ -91,16 +91,18 @@ app.set('trust proxy', 1);
 // Configure session middleware
 const sessionMiddleware = session({
     store: redisStore,
-    secret: process.env.SESSION_SECRET_KEY || 'your-very-strong-secret-key', // Use a strong secret from env vars
+    secret: process.env.SESSION_SECRET_KEY || 'your-very-strong-secret-key',
     rolling: true,
     resave: false,
     saveUninitialized: false,
     cookie: {
-        maxAge: (parseInt(process.env.SESSION_EXPIRATION_TIME, 10) || 30 * 60) * 1000, // Default 30 minutes
+        maxAge: (parseInt(process.env.SESSION_EXPIRATION_TIME, 10) || 30 * 60) * 1000,
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
-    }
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        domain: process.env.NODE_ENV === 'production' ? process.env.COOKIE_DOMAIN : undefined
+    },
+    proxy: true // Trust the reverse proxy
 });
 app.use(sessionMiddleware);
 

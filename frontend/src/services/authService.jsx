@@ -66,20 +66,20 @@ class AuthService {
      */
     async createProfile(profileData) {
         try {
-            let profileId;
-            for (let pair of profileData.entries()) {
-                console.log(`${pair[0]}:`, pair[1]);
-                if(pair[0] === "profileId") {
-                    profileId = pair[1];
-                }
+            // Ensure profileData is FormData
+            if (!(profileData instanceof FormData)) {
+                throw new Error('profileData must be a FormData object');
             }
+
+            // Get profileId from FormData
+            const profileId = profileData.get('profileId');
             
-            // Kiểm tra xem profileId có tồn tại trong dữ liệu không
+            // Validate profileId
             if (!profileId) {
                 throw new Error('Thiếu thông tin profileId.');
             }
 
-            // Sử dụng sendApiRequest utility với phương thức PUT
+            // Send the request
             const response = await sendApiRequest('/api/auth/profile', {
                 method: 'PUT',
                 body: profileData,
@@ -87,7 +87,7 @@ class AuthService {
             });
 
             console.log('AuthService createProfile successful:', response);
-            return data;
+            return response; // Return the actual response instead of undefined 'data'
         } catch (error) {
             console.error("AuthService createProfile error:", error);
             throw error;

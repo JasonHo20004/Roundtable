@@ -26,6 +26,18 @@ function CreateProfile() {
     const [formErrors, setFormErrors] = useState({});
     const [avatarPreview, setAvatarPreview] = useState(null);
     const [bannerPreview, setBannerPreview] = useState(null);
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
+
+    // Add effect to update formData with profileId
+    useEffect(() => {
+        if (profileId) {
+            setFormData(prev => ({
+                ...prev,
+                profileId: profileId
+            }));
+        }
+    }, [profileId]);
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -102,6 +114,43 @@ function CreateProfile() {
     const handleSkip = () => {
         // Chuyển hướng trực tiếp đến trang đăng nhập
         navigate('/login');
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setFormErrors({});
+        setError(null);
+        setSuccess(null);
+        setIsSubmitting(true);
+
+        try {
+            // Create FormData object from formData state
+            const submitData = new FormData();
+            Object.entries(formData).forEach(([key, value]) => {
+                if (value !== null && value !== undefined) {
+                    submitData.append(key, value);
+                }
+            });
+
+            // Add files if they exist
+            if (formData.avatar instanceof File) {
+                submitData.append('avatar', formData.avatar);
+            }
+            if (formData.banner instanceof File) {
+                submitData.append('banner', formData.banner);
+            }
+
+            const response = await createProfile(submitData);
+            setSuccess('Profile created successfully!');
+            navigate('/dashboard');
+        } catch (err) {
+            setError(err.message || 'Failed to create profile');
+            if (err.errors) {
+                setFormErrors(err.errors);
+            }
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     useEffect(() => {

@@ -304,6 +304,7 @@ export default function CreateSubtableModal({isOpen, onClose}) {
                         disabled={isSubmitting}
                         accept="image/png, image/jpeg, image/gif, image/webp"
                         onChange={handleFileChange}
+                        required
                     />
                     {iconPreview && (
                         <div className="mt-2">
@@ -327,6 +328,7 @@ export default function CreateSubtableModal({isOpen, onClose}) {
                         disabled={isSubmitting}
                         accept="image/png, image/jpeg, image/gif, image/webp"
                         onChange={handleFileChange}
+                        required
                     />
                     {bannerPreview && (
                         <div className="mt-2">

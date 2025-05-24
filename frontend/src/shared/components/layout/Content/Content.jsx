@@ -17,6 +17,7 @@ export default function Content(props) {
                 id="left-sidebar-container"
                 toggleSidebar={props.toggleSidebar}
                 isSidebarVisible={props.isSidebarVisible}
+                communities={props.communities}
             />
             <SidebarProvider>
                 {user && (

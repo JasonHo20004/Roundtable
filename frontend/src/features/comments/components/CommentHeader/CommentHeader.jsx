@@ -16,7 +16,7 @@ export default function CommentHeader({author, createdAt}) {
     return (
         <div className="d-flex align-items-center mb-2">
             <Avatar
-                src={`http://localhost:5000/images/${author.avatar}`}
+                src={author.avatar}
                 alt={<Identifier type="user" namespace={author.username}/>}
                 width={20}
                 height={20}

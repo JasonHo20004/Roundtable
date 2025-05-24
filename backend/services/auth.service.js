@@ -413,20 +413,30 @@ class AuthService {
      * @param {object} profileData - Dữ liệu profile cần cập nhật.
      * @returns {Promise<Profile>} - Profile đã được cập nhật.
      */
-    async updateProfileById(profileId, profileData, avatar, banner) {
+    async updateProfileById(profileId, profileData,avatar,banner) {
         if (!profileId) {
             throw new BadRequestError('Thiếu thông tin profileId.');
         }
 
         if (!profileData) {
+            // console.log('===(SERVICE) PROFILE DATA INVALID ===');
             throw new BadRequestError('Dữ liệu hồ sơ không hợp lệ.');
         }
 
+        // Kiểm tra giá trị gender nếu có
+        // if (profileData.gender && !Profile.isValidGender(profileData.gender)) {
+        //     console.log('===(SERVICE) INVALID GENDER VALUE ===', profileData.gender);
+        //     throw new BadRequestError('Giá trị gender không hợp lệ.');
+        // }
         let userId;
+
         try {
+            console.log("profileId", profileId)
             const principal = await this.principalDao.getByProfileId(profileId);
+            console.log("principal")
             if (!principal?.principalId) {
-                throw new NotFoundError('Không tìm thấy thông tin người dùng.');
+                console.error(`Data inconsistency: Account ${profileId} found, but no matching Principal.`);
+                throw new InternalServerError('User data configuration error during verification.');
             }
             const register = await this.registeredUserDao.getByPrincipalId(principal.principalId);
             if (!register?.userId) {
@@ -434,59 +444,67 @@ class AuthService {
             }
             userId = register.userId;
         } catch (error) {
-            if (error instanceof NotFoundError) {
-                throw error;
-            }
-            throw new InternalServerError('Lỗi khi tìm thông tin người dùng.');
+
         }
 
-        // Use a transaction for the entire update process
-        return await postgresInstance.transaction(async (trx) => {
-            try {
-                let avatarId = null;
-                let bannerId = null;
+        let avatarId = ""
+        let bannerId = ""
 
-                // Only create media records if files are provided
-                if (avatar) {
-                    const mediaAvatar = new Media(null, userId, avatar.filename, "image", avatar.mimetype, avatar.size);
-                    const createdMediaAvatar = await this.mediaDAO.create(mediaAvatar, trx);
-                    if (!createdMediaAvatar?.mediaId) {
-                        throw new InternalServerError('Không thể tạo media cho avatar.');
-                    }
-                    avatarId = createdMediaAvatar.mediaId;
+
+        //const mediaAvatar =  new Media(null,userId, avatar.filename,"image",avatar.mimetype, avatar.size);
+        //const mediaBanner = new Media(null, userId, banner.filename, "image",banner.mimetype, banner.size);
+        //console.log("mediaAvatar:", mediaAvatar);
+        //console.log("mediaBanner:", mediaBanner);
+
+        try {
+
+
+            // const createdMediAvatar = await this.mediaDAO.create(mediaAvatar); // Pass transaction
+            // const createdMediaBanner = await this.mediaDAO.create(mediaBanner); // Pass transaction
+            // console.log("createdMediaAvatar:", createdMediAvatar);
+            // console.log("createdMediaBanner:", createdMediaBanner);
+            // avatarId = createdMediAvatar.mediaId;
+            // bannerId = createdMediaBanner.mediaId;
+            if (avatar) {
+                const mediaAvatar = new Media(null, userId, avatar.path, "image", avatar.mimetype, avatar.size);
+                const createdMediaAvatar = await this.mediaDAO.create(mediaAvatar);
+                avatarId = createdMediaAvatar.mediaId;
+            }
+
+            if (banner) {
+                const mediaBanner = new Media(null, userId, banner.path, "image", banner.mimetype, banner.size);
+                const createdMediaBanner = await this.mediaDAO.create(mediaBanner);
+                bannerId = createdMediaBanner.mediaId;
+            }
+            // Prepare update data
+            const updateData = {
+                bio: profileData.bio,
+                location: profileData.location,
+                displayName: profileData.displayName,
+                gender: profileData.gender
+            };
+
+            // Only add avatar/banner to updateData if they exist
+            if (avatarId) updateData.avatar = avatarId;
+            if (bannerId) updateData.banner = bannerId;
+
+            // Loại bỏ các trường undefined
+            Object.keys(updateData).forEach(key => {
+                if (updateData[key] === undefined) {
+                    delete updateData[key];
                 }
+            });
 
-                if (banner) {
-                    const mediaBanner = new Media(null, userId, banner.filename, "image", banner.mimetype, banner.size);
-                    const createdMediaBanner = await this.mediaDAO.create(mediaBanner, trx);
-                    if (!createdMediaBanner?.mediaId) {
-                        throw new InternalServerError('Không thể tạo media cho banner.');
-                    }
-                    bannerId = createdMediaBanner.mediaId;
-                }
+            // console.log('===(SERVICE) FINAL UPDATE DATA ===', JSON.stringify(updateData));
 
-                // Prepare update data
-                const updateData = {
-                    ...(avatarId && { avatar: avatarId }),
-                    ...(bannerId && { banner: bannerId }),
-                    ...(profileData.bio !== undefined && { bio: profileData.bio }),
-                    ...(profileData.location !== undefined && { location: profileData.location }),
-                    ...(profileData.displayName !== undefined && { displayName: profileData.displayName }),
-                    ...(profileData.gender !== undefined && { gender: profileData.gender })
-                };
+            // Cập nhật profile trong database
+            // console.log('===(SERVICE) CALLING PROFILE DAO UPDATE ===');
+            const updatedProfile = await ProfileDAO.update(profileId, updateData);
 
-                // Remove undefined values
-                Object.keys(updateData).forEach(key => {
-                    if (updateData[key] === undefined) {
-                        delete updateData[key];
-                    }
-                });
-
-                // Update profile
-                const updatedProfile = await ProfileDAO.update(profileId, updateData, trx);
-                if (!updatedProfile) {
-                    throw new InternalServerError('Không thể cập nhật hồ sơ người dùng.');
-                }
+            if (!updatedProfile) {
+                // console.log('===(SERVICE) PROFILE UPDATE FAILED - NO PROFILE RETURNED ===');
+                throw new InternalServerError('Không thể cập nhật hồ sơ người dùng.');
+            }
 
                 return updatedProfile;
             } catch (error) {
@@ -503,7 +521,7 @@ class AuthService {
                 // Wrap unknown errors
                 throw new InternalServerError('Đã xảy ra lỗi không mong muốn khi cập nhật hồ sơ.');
             }
-        });
+        
     }
 
     /**
@@ -573,6 +591,7 @@ class AuthService {
             // Wrap unknown errors
             throw new InternalServerError('Failed to resend verification code. Please try again later.');
         }
+
     }
 }
 

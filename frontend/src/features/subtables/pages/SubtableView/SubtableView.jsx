@@ -124,13 +124,13 @@ export default function SubtableView() {
                 <div className='Header d-flex justify-content-center align-items-center'>
                     <div className="avatarAndBanner w-100 h-100">
                         {subtableBanner ? (
-                            <img src={`http://localhost:5000/images/${subtableBanner}`} className="img-fluid object-fit-cover border rounded sizeBanner"
+                            <img src={subtableBanner} className="img-fluid object-fit-cover border rounded sizeBanner"
                                 alt={`${subtableDisplayName} banner`} />
                         ) : (
                             <div className="sizeBanner banner-placeholder"></div>
                         )}
                         <div className='bg-white rounded-circle resizeAvatar d-flex justify-content-center align-items-center moveAvatar'>
-                            <Avatar src={`http://localhost:5000/images/${subtableAvatar}`} alt={`${subtableDisplayName} icon`} height={90} width={90} />
+                            <Avatar src={subtableAvatar} alt={`${subtableDisplayName} icon`} height={90} width={90} />
                         </div>
                         <div className='nameSubtable'>
                             s/{subtableDisplayName}

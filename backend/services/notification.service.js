@@ -84,7 +84,7 @@ class NotificationService {
             const triggeringPrincipalId = commenterProfile?.principalId || null;
 
             // 5. Prepare notification details
-            const sourceUrl = `/posts/${createdComment.postId}#comment-${createdComment.commentId}`;
+            const sourceUrl = `/comments/${createdComment.postId}`;
             const commenterName = commenterProfile?.displayName || commenterProfile?.username || 'Someone';
             const postTitleSnippet = post.title ? `"${post.title.substring(0, 30)}..."` : "your post";
             let content = '';

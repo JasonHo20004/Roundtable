@@ -60,7 +60,7 @@ export default function Header(props) {
             padding="1"
         >
             <Avatar
-                src={`http://localhost:5000/images/${user?.avatar}` || "https://avatars.githubusercontent.com/u/55435868?v=4"} // Use user's avatar if available
+                src={user?.avatar || "https://avatars.githubusercontent.com/u/55435868?v=4"} // Use user's avatar if available
                 alt={user?.displayName || "User"}
                 width="25"
                 height="25"
@@ -189,7 +189,7 @@ export default function Header(props) {
                                             <div className="d-flex flex-row gap-2 align-items-center px-2 py-2">
                                                 <div className="d-flex align-items-center justify-content-center">
                                                     <Avatar
-                                                        src={`http://localhost:5000/images/${user?.avatar}`|| "https://avatars.githubusercontent.com/u/55435868?v=4"}
+                                                        src={user?.avatar|| "https://avatars.githubusercontent.com/u/55435868?v=4"}
                                                         alt={user?.displayName || "User"}
                                                         width="25"
                                                         height="25"

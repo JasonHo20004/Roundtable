@@ -210,7 +210,7 @@ export default function CreatePost() {
                         {selectedSubtable ? (
                             <>
                                 <Avatar
-                                    src={`http://localhost:5000/images/${selectedSubtable.icon}`}
+                                    src={selectedSubtable.icon}
                                     alt={`s/${selectedSubtable.name}`}
                                     width={20}
                                     height={20}
@@ -247,7 +247,7 @@ export default function CreatePost() {
                                         type="button" // Also prevent form submission
                                     >
                                         <Avatar
-                                            src={`http://localhost:5000/images/${sub.icon}`}
+                                            src={sub.icon}
                                             alt={`s/${sub.name}`}
                                             width={30}
                                             height={30}

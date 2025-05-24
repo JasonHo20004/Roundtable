@@ -226,7 +226,7 @@ export default function SearchContent() {
                                                     const displayUsername = person.username && person.username.toLowerCase() !== 'empty' ? person.username : "Tên người dùng không khả dụng";
                                                     const displayDisplayName = person.displayName && person.displayName.toLowerCase() !== 'empty' ? person.displayName : displayUsername;
                                                     const displayBio = person.bio && person.bio.toLowerCase() !== 'empty' ? person.bio : "";
-                                                    const userId = person.userId || person.id;
+                                                        const userId = person.userId || person.id;
                                                     
                                                     return (
                                                         <Link

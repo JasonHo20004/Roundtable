@@ -5,7 +5,7 @@ import useAuth from "#hooks/useAuth.jsx";
 import useWebSocketNotifications from "#hooks/useWebSocketNotifications.jsx";
 import ChatAppWrapper from "#features/chats/components/ChatAppWrapper/ChatAppWrapper";
 import useWebSocketChat from "#hooks/useWebSocketChat.jsx";
-import { useLocation, useNavigate } from 'react-router';
+import {useLoaderData, useLocation, useNavigate } from 'react-router';
 
 // Lazy load components
 const Header = React.lazy(() => import("#shared/components/layout/Header/Header.jsx"));
@@ -29,6 +29,17 @@ export default function MainLayout() {
 
     // --- State for ChatBox ---
     const [isChatboxOpen, setIsChatboxOpen] = useState(false);
+
+    const loaderData = useLoaderData();
+    // Provide default empty array if communities is undefined
+    const { communities = [] } = loaderData || {};
+    // For debugging
+    useEffect(() => {
+        console.log("Loader data:", loaderData);
+        console.log("Communities:", communities);
+    }, [loaderData, communities]);
+
+
 
 
     const location = useLocation();
@@ -135,6 +146,7 @@ export default function MainLayout() {
             <Content
                 toggleSidebar={toggleSidebar}
                 isSidebarVisible={isSidebarVisible}
+                communities={communities}
             />
 
             <Footer/>

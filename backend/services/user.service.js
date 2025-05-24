@@ -1,11 +1,13 @@
 import RegisteredUserDao from '#daos/registered-user.dao.js';
 import UserProfileDao from '#daos/user-profile.dao.js';
+import mediaDao from '#daos/media.dao.js';
 import {BadRequestError} from "#errors/AppError.js";
 
 class UserService {
     constructor(registeredUserDao, userProfileDao) {
         this.registeredUserDao = registeredUserDao;
         this.userProfileDao = userProfileDao;
+        this.mediaDao = mediaDao;
     }
 
     /**
@@ -57,6 +59,22 @@ class UserService {
             };
         } catch (error) {
             console.error('[UserService:getUserProfile] Error:', error);
+            throw error;
+        }
+    }
+    async getUserMedia(mediaId) {
+        try {
+            // Validate input
+            if (!mediaId) {
+                throw new BadRequestError('Missing user ID or media ID');
+            }
+
+            // Get user media from DAO
+            const media = await this.mediaDao.getById(mediaId);
+
+            return media;
+        } catch (error) {
+            console.error('[UserService:getUserMedia] Error:', error);
             throw error;
         }
     }

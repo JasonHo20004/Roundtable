@@ -185,6 +185,7 @@ function CreateProfile() {
                             onChange={handleChange}
                             rows="3"
                             disabled={isSubmitting}
+                            required
                         ></textarea>
                         {formErrors.bio && <div className="invalid-feedback">{formErrors.bio}</div>}
                     </div>
@@ -201,6 +202,7 @@ function CreateProfile() {
                             feedback={formErrors.location}
                             addon={<Icon name="location" size="16"/>}
                             disabled={isSubmitting}
+                            required
                         />
                     </div>
 
@@ -213,6 +215,7 @@ function CreateProfile() {
                             value={formData.gender}
                             onChange={handleChange}
                             disabled={isSubmitting}
+                            required
                         >
                             <option value="">-- Chọn giới tính --</option>
                             <option value="male">Nam</option>

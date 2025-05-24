@@ -5,6 +5,8 @@ import Link from '#shared/components/Navigation/Link/Link';
 import Avatar from '#shared/components/UIElement/Avatar/Avatar';
 import LoadingSpinner from '#shared/components/UIElement/LoadingSpinner/LoadingSpinner';
 import Identifier from '#shared/components/UIElement/Identifier/Identifier';
+import subtableService from '#services/subtableService';
+import userService from '#services/userService';
 
 const SidebarSection = ({ title, items, renderItem, emptyMessage }) => (
     <div className="sidebar-section mb-4">
@@ -40,12 +42,62 @@ export default function SearchSidebarContent() {
             try {
                 setLoading(true);
                 setError(null);
-                const [communitiesReponse, usersResponse] = await Promise.all([
-                    searchService.searchCommunities({q, limit: 5}),
-                    searchService.searchUsers({q, limit: 5})
-                ]);
-                setCommunities(communitiesReponse.data.communities);
-                setUsers(usersResponse.data.users);
+                // const [communitiesReponse, usersResponse] = await Promise.all([
+                //     searchService.searchCommunities({q, limit: 5}),
+                //     searchService.searchUsers({q, limit: 5})
+                // ]);
+                // setCommunities(communitiesReponse.data.communities);
+                // setUsers(usersResponse.data.users);
+
+
+                const communitiesReponse = await searchService.searchCommunities({ q, limit: 5 });
+                if (communitiesReponse?.data?.communities) {
+                    let items = [];
+                    items = communitiesReponse.data.communities;
+                    const communitiesWithMedia = await Promise.all(
+                        items.map(async (community) => {
+                            try {
+                                const mediaResponse = await subtableService.getSubtableMedia(
+                                    community.icon,
+                                    community.name
+                                );
+                                return {
+                                    ...community,
+                                    icon: mediaResponse.data.url,
+                                };
+                            } catch (error) {
+                                console.error(`Failed to load media for community ${community.name}:`, error);
+                                return community; // Giữ nguyên nếu lỗi
+                            }
+                        })
+                    );
+                    items = communitiesWithMedia;
+                    setCommunities(items)
+                }
+                const usersResponse = await searchService.searchUsers({ q, limit:5 });
+                if (usersResponse?.data?.users) {
+                    let items = [];
+                    items = usersResponse.data.users;
+                    const usersWithMedia = await Promise.all(
+                        items.map(async (user) => {
+                            try {
+                                const mediaResponse = await userService.getUserMedia(
+                                    user.userId,
+                                    user.avatar
+                                );
+                                return {
+                                    ...user,
+                                    avatar: mediaResponse.data.url,
+                                };
+                            } catch (error) {
+                                console.error(`Failed to load media for user ${user.username}:`, error);
+                                return user; // Giữ nguyên nếu lỗi
+                            }
+                        })
+                    );
+                    items = usersWithMedia;
+                    setUsers(items)
+                }
             } catch (error) {
                 console.error("Error fetching sidebar data:", error);
                 setError(error.message || "Failed to load sidebar data");
@@ -79,7 +131,7 @@ export default function SearchSidebarContent() {
     const renderCommunity = (community) => (
         <Link
             key={community.subtableId}
-            href={`/r/${community.name}`}
+            href={`/s/${community.name}`}
             className="list-group-item list-group-item-action d-flex align-items-center p-2"
         >
             <Avatar
@@ -101,7 +153,7 @@ export default function SearchSidebarContent() {
     const renderUser = (user) => (
         <Link
             key={user.userId}
-            href={`/u/${user.username}`}
+            href={`/user/${user.userId}`}
             className="list-group-item list-group-item-action d-flex align-items-center p-2"
         >
             <Avatar

@@ -53,7 +53,7 @@ function UserProfileView({
                     <div className="profile-view-header card mb-3">
                         <div className="card-body d-flex align-items-center">
                             <Avatar
-                                src={`http://localhost:5000/images/${userProfileData.avatar }`|| 'default_avatar_url_here'}
+                                src={userProfileData.avatar || 'default_avatar_url_here'}
                                 alt={userProfileData.displayName || userProfileData.username}
                                 mainClass="profile-view-avatar me-3"
                             />

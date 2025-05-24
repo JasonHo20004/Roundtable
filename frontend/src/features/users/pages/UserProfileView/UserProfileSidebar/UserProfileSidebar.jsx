@@ -19,7 +19,7 @@ function UserProfileSidebar({userProfileData, isOwnProfile}) {
             <div className="profile-sidebar-header-content">
                 {userProfileData.banner && (
                     <img
-                        src={`http://localhost:5000/images/${userProfileData.banner}`}
+                        src={userProfileData.banner}
                         alt={`${userProfileData.displayName || userProfileData.username}'s Banner`}
                         className="profile-banner"
                     />

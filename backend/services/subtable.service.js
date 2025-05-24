@@ -161,8 +161,8 @@ class SubtableService {
         // 4. create media entries for icon and banner
         let icon = ""
         let banner = ""
-        const mediaIcon =  new Media(null,creatorUserId, iconFile.filename,"image",iconFile.mimetype, iconFile.size);
-        const mediaBanner = new Media(null, creatorUserId, bannerFile.filename, "image",bannerFile.mimetype, bannerFile.size);
+        const mediaIcon =  new Media(null,creatorUserId, iconFile.path,"image",iconFile.mimetype, iconFile.size);
+        const mediaBanner = new Media(null, creatorUserId, bannerFile.path, "image",bannerFile.mimetype, bannerFile.size);
         console.log("mediaIcon:", mediaIcon);
         console.log("mediaBanner:", mediaBanner);
        

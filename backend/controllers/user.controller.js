@@ -70,6 +70,30 @@ class UserController {
             });
         }
     }
+    getUserMedia = async (req, res) => {
+        try {
+            const {userId, mediaId} = req.params;
+            console.log('Fetching subtable media with ID:', mediaId);
+            const userMedia = await this.userService.getUserMedia(mediaId);
+            return res.status(HTTP_STATUS.OK).json({
+                success: true,
+                data: userMedia
+            });
+        } catch (error) {
+            console.error('[UserController:getUserMedia] Error:', error.message);
+            if (error instanceof BadRequestError) {
+                return res.status(HTTP_STATUS.BAD_REQUEST).json({success: false, message: error.message});
+            }
+            if (error instanceof InternalServerError) {
+                return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({success: false, message: error.message});
+            }
+            console.error(error.stack || error);
+            return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
+                success: false,
+                message: 'An unexpected error occurred while fetching user media.'
+            });
+        }
+    };
 }
 
 export default new UserController(userService);

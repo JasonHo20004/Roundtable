@@ -8,13 +8,18 @@ import authService from '#services/authService';
 async function createProfileAction({request}) {
     const formData = await request.formData();
     const data = Object.fromEntries(formData.entries());
-    const avatar =  formData.get('avatar')
-    const banner = formData.get('banner')
+    const avatar = formData.get('avatar');
+    const banner = formData.get('banner');
 
     const httpMethod = request.method;
 
-    if (httpMethod !== 'POST') {
-        return;
+    if (httpMethod !== 'PUT') {
+        return {
+            success: false,
+            error: true,
+            message: 'Invalid request method. Expected PUT.',
+            status: 405
+        };
     }
 
     // Đảm bảo profileId được bao gồm trong dữ liệu

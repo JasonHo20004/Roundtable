@@ -145,7 +145,7 @@ function CreateProfile() {
 
                 <Form
                     id="create-profile"
-                    method="post"
+                    method="put"
                     action="/create-profile"
                     mainClass="create-profile-form"
                     encType="multipart/form-data"

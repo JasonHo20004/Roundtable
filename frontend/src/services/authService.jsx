@@ -66,41 +66,28 @@ class AuthService {
      */
     async createProfile(profileData) {
         try {
-            let profileId 
+            let profileId;
             for (let pair of profileData.entries()) {
-            console.log(`${pair[0]}:`, pair[1]);
-            if(pair[0] === "profileId")
-            {
-                profileId = pair[1]
-
-            }
+                console.log(`${pair[0]}:`, pair[1]);
+                if(pair[0] === "profileId") {
+                    profileId = pair[1];
+                }
             }
             
             // Kiểm tra xem profileId có tồn tại trong dữ liệu không
             if (!profileId) {
                 throw new Error('Thiếu thông tin profileId.');
             }
-            
 
-
-            // Sử dụng phương thức PUT để cập nhật hồ sơ
-            // const response = await sendApiRequest('/api/auth/profile', {
-            //     method: 'PUT',
-            //     body: profileData
-            // });
-            const baseUrl = '/api/auth/profile'
-            const response = await fetch(baseUrl, {
+            // Sử dụng sendApiRequest utility với phương thức PUT
+            const response = await sendApiRequest('/api/auth/profile', {
                 method: 'PUT',
                 body: profileData,
-                headers: {
-                    'Accept': 'application/json',
-                },
-                credentials: 'include',
+                credentials: 'include'
             });
-            const data = await response.json(); 
 
             console.log('AuthService createProfile successful:', response);
-            return data;
+            return response;
         } catch (error) {
             console.error("AuthService createProfile error:", error);
             throw error;

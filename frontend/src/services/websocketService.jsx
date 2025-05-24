@@ -9,7 +9,10 @@ const RECONNECT_DELAY_MS = 3000;
 
 // Determine WebSocket protocol based on HTTP protocol
 const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-const wsUrl = `${wsProtocol}//${window.location.hostname}:5000`;
+const wsHost = process.env.NODE_ENV === 'production' 
+    ? window.location.hostname  // Use the same hostname in production
+    : `${window.location.hostname}:5000`; // Use port 5000 in development
+const wsUrl = `${wsProtocol}//${wsHost}`;
 
 // --- Helper function to notify all observers ---
 function notifyObservers(data) {

@@ -48,13 +48,19 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended: true}));
 
+// Health check endpoint for Railway
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'healthy' });
+});
+
 const internalIp = process.env.FRONTEND_INTERNAL_IP;
 const frontendPort = process.env.FRONTEND_PORT;
 const allowedOrigins = [
-    `http://localhost:${frontendPort}`,
-    `http://${internalIp}:${frontendPort}`,
-    process.env.FRONTEND_URL // Add your Vercel deployment URL
-];
+    process.env.FRONTEND_URL,
+    process.env.RAILWAY_PUBLIC_DOMAIN ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}` : null,
+    process.env.NODE_ENV === 'development' ? `http://localhost:${frontendPort}` : null,
+    process.env.NODE_ENV === 'development' && internalIp ? `http://${internalIp}:${frontendPort}` : null
+].filter(Boolean); // Remove null/undefined values
 
 console.log('Allowed Origins:', allowedOrigins);
 

@@ -145,7 +145,11 @@ class AuthService {
                     throw new Error('DB_INSERT_FAIL: RegisteredUser');
                 }
 
-                return { account: createdAccount, registeredUser: createdRegisteredUser };
+                return { 
+                    account: createdAccount, 
+                    registeredUser: createdRegisteredUser,
+                    profile: createdProfile  // Add profile to returned entities
+                };
             });
 
             const { userId } = createdEntities.registeredUser;
@@ -168,7 +172,7 @@ class AuthService {
                 username: createdEntities.account.username,
                 email: createdEntities.account.email,
                 isVerified: false,
-                profileId: createdProfile.profileId  // Add profileId to the response
+                profileId: createdEntities.profile.profileId  // Use profile from createdEntities
             };
 
         } catch (error) {

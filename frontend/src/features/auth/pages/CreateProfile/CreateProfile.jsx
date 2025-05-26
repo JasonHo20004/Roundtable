@@ -37,8 +37,11 @@ function CreateProfile() {
                 ...prev,
                 profileId: profileId
             }));
+        } else {
+            // If no profileId in location state, redirect to login
+            navigate('/login', { replace: true });
         }
-    }, [profileId]);
+    }, [profileId, navigate]);
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -124,6 +127,13 @@ function CreateProfile() {
         setSuccess(null);
         setIsSubmitting(true);
 
+        // Validate that we have a profileId
+        if (!profileId) {
+            setError('Missing profile ID. Please try registering again.');
+            setIsSubmitting(false);
+            return;
+        }
+
         // Log the current state
         console.log('Submitting form with profileId:', profileId);
         console.log('Current formData:', formData);
@@ -131,8 +141,13 @@ function CreateProfile() {
         try {
             // Create FormData object from formData state
             const submitData = new FormData();
+            
+            // Always include profileId first
+            submitData.append('profileId', profileId);
+            
+            // Then add other form data
             Object.entries(formData).forEach(([key, value]) => {
-                if (value !== null && value !== undefined) {
+                if (value !== null && value !== undefined && key !== 'profileId') { // Skip profileId as we already added it
                     submitData.append(key, value);
                 }
             });

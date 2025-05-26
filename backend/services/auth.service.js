@@ -168,6 +168,7 @@ class AuthService {
                 username: createdEntities.account.username,
                 email: createdEntities.account.email,
                 isVerified: false,
+                profileId: createdProfile.profileId  // Add profileId to the response
             };
 
         } catch (error) {

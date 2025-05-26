@@ -7,10 +7,6 @@ import authService from '#services/authService';
  */
 async function createProfileAction({request}) {
     const formData = await request.formData();
-    const data = Object.fromEntries(formData.entries());
-    const avatar = formData.get('avatar');
-    const banner = formData.get('banner');
-
     const httpMethod = request.method;
 
     if (httpMethod !== 'PUT') {
@@ -22,8 +18,9 @@ async function createProfileAction({request}) {
         };
     }
 
-    // Đảm bảo profileId được bao gồm trong dữ liệu
-    if (!data.profileId) {
+    // Check if profileId exists in formData
+    const profileId = formData.get('profileId');
+    if (!profileId) {
         return {
             success: false,
             error: true,
@@ -33,11 +30,11 @@ async function createProfileAction({request}) {
     }
 
     try {
-        // Gọi service để tạo hồ sơ
+        // Pass the FormData object directly to the service
         const response = await authService.createProfile(formData);
 
         return {
-            success: response.success,
+            success: true,
             message: response.message || 'Tạo hồ sơ thành công!'
         };
     } catch (error) {

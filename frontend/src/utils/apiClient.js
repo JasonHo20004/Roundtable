@@ -7,7 +7,7 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || '';
  * @param {string} url - The endpoint URL.
  * @param {object} options - Fetch options.
  * @param {string} [options.method='GET'] - HTTP method.
- * @param {object|null} [options.body=null] - Request body (will be JSON stringified).
+ * @param {object|FormData|null} [options.body=null] - Request body (will be JSON stringified if not FormData).
  * @param {object} [options.headers={}] - Additional headers.
  * @returns {Promise<object>} - The JSON response data.
  * @throws {Error} - Throws an error with status and data on failure.
@@ -16,12 +16,16 @@ export async function sendApiRequest(url, options = {}) {
     const {method = 'GET', body = null, headers = {}} = options;
     const fullUrl = `${API_BASE_URL}${url}`;
 
+    // Determine if we're sending FormData
+    const isFormData = body instanceof FormData;
+
     try {
         const response = await fetch(fullUrl, {
             method,
-            body: body ? JSON.stringify(body) : null,
+            body: body ? (isFormData ? body : JSON.stringify(body)) : null,
             headers: {
-                'Content-Type': 'application/json',
+                // Only set Content-Type if not FormData
+                ...(isFormData ? {} : {'Content-Type': 'application/json'}),
                 ...headers,
             },
             credentials: 'include',
